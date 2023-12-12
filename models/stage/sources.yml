@@ -1,0 +1,16 @@
+sources:   
+   - name: src     
+     database: sourcedb     
+     schema: mk_mall    
+     tables:
+     - name: customers  
+     - name:  nations
+     - name:  regions
+     - name:  lineitems
+     -  name:   parts
+     -  name:   partsupps
+     -  name:   supplier
+     -  name:   orders
+     
+
+
