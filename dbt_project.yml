@@ -39,3 +39,10 @@ models:
     stage:
       +materialized: table
 
+vars:
+  mkts: HOUSEHOLD
+  euro: 0.92
+  inr: 83.05
+
+
+

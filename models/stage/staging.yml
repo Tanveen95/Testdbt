@@ -1,0 +1,31 @@
+version: 2 
+
+models:   
+  -  name: stg_nations
+     description: Table for all nations    
+     columns:       
+       - name: nation_id 
+         description: '{{ doc("primarykey")}}'
+         tests:           
+           - unique           
+           - not_null       
+  -   name:   region_id 
+      description:     '{{ doc("primarykey")}}'      
+      tests:           
+        - not_null           
+        - relationships:               
+            to: ref('stg_regions')               
+            field: region_id   
+  -   name: stg_regions
+      columns:       
+        - name: region_id         
+          tests:           
+            - unique           
+            - not_null      
+        - name: name         
+          tests:              
+            - accepted_values:               
+                values: ['ASIA','AFRICA','AMERICA','EUROPE','MIDDLE EAST']               
+                config:                 
+                  store_failures: true                 
+                  schema: newschema

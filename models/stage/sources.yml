@@ -9,8 +9,13 @@ sources:
      - name:  lineitems
      -  name:   parts
      -  name:   partsupps
-     -  name:   supplier
+     -  name:   suppliers
      -  name:   orders
-     
+        loaded_at_field: o_orderdate::timestamp
+        freshness:
+          warn_after: {count: 1,period: hour}
+          error_after: {count: 4,period: day}
+
+  
 
 
