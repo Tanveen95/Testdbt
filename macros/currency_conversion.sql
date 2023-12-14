@@ -5,3 +5,7 @@ round({{colm}} * {{ var('euro')}},{{deci}})
 {% macro dollar_to_inr (colm,deci) %}
 round({{colm}} * {{ var('inr')}},{{deci}})
 {% endmacro %}
+
+{% macro money() -%}
+::decimal(16,4)
+{%- endmacro %}

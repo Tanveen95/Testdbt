@@ -7,8 +7,8 @@ config(
     select * from stg_orders
 ) 
 
-select order_id, sum(total_price) ordertotal 
+select order_id, sum(total_price_usd) ordertotal 
 from orders 
 group by 1 
-having (ordertotal<=800)
+having (ordertotal<=900)
 

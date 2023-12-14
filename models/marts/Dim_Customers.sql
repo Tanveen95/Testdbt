@@ -1,9 +1,27 @@
 {{
     config(
-            materialized='view'
-    )  
+        materialized='incremental'
+    )
 }}
-select
+
+with supplier as (
+    select * from {{ ref('stg_customers') }}
+     {%- if is_incremental() %}
+    where updated_time > (select max(updated_time) from {{this}})
+    {% endif -%}
+),
+nation as (
+
+    select * from {{ ref('stg_nations') }}
+),
+region as (
+
+    select * from {{ ref('stg_regions') }}
+
+),
+final as (
+
+    select
         c_custkey as customer_id,
         c_name as name,
         c_address as address,
@@ -16,4 +34,7 @@ select
 from {{source('src','customers') }} as c 
 join {{source('src','nations') }} as n
 on c.c_nationkey=n.n_nationkey
-where c_mktsegment= '{{ var('mkts')}}'
+            
+)
+
+select * from final
