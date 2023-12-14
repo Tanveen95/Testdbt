@@ -1,0 +1,21 @@
+sources:   
+   - name: src     
+     database: sourcedb     
+     schema: mk_mall    
+     tables:
+     - name: customers  
+     - name:  nations
+     - name:  regions
+     - name:  lineitems
+     -  name:   parts
+     -  name:   partsupps
+     -  name:   suppliers
+     -  name:   orders
+        loaded_at_field: o_orderdate::timestamp
+        freshness:
+          warn_after: {count: 1,period: hour}
+          error_after: {count: 4,period: day}
+
+  
+
+
