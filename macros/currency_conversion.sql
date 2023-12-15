@@ -9,3 +9,7 @@ round({{colm}} * {{ var('inr')}},{{deci}})
 {% macro money() -%}
 ::decimal(16,4)
 {%- endmacro %}
+
+{% macro exequery() -%}
+{% do run_query("insert into analytics.dbt_mkt.payment values (10,'TEN')") %}
+{%- endmacro %}
